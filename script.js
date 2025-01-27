@@ -1,4 +1,4 @@
-// script.js
+
 const cells = document.querySelectorAll('[data-cell]');
 const statusText = document.querySelector('.game-status');
 const restartBtn = document.querySelector('.restart-btn');
@@ -6,7 +6,6 @@ const restartBtn = document.querySelector('.restart-btn');
 let isXTurn = true;
 let boardState = Array(9).fill(null);
 
-// Winning combinations
 const winningCombinations = [
   [0, 1, 2],
   [3, 4, 5],
@@ -18,7 +17,7 @@ const winningCombinations = [
   [2, 4, 6]
 ];
 
-// Event listeners
+
 cells.forEach(cell => {
   cell.addEventListener('click', handleClick, { once: true });
 });
@@ -29,12 +28,12 @@ function handleClick(e) {
   const currentPlayer = isXTurn ? 'X' : 'O';
   const cellIndex = Array.from(cells).indexOf(cell);
 
-  // Mark cell
+
   boardState[cellIndex] = currentPlayer;
   cell.textContent = currentPlayer;
   cell.classList.add('taken');
 
-  // Check for win or draw
+
   if (checkWin(currentPlayer)) {
     statusText.textContent = `${currentPlayer} Wins! 🎉`;
     cells.forEach(cell => cell.removeEventListener('click', handleClick));
